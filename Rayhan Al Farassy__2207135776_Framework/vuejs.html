@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <title>To Do App Vue JS</title>
+</head>
+<body>
+    <div id="app">
+        <h1>To Do App</h1>
+      
+        <div>
+            <input type="text" v-model="todo">
+            <button v-on:click="tambah">Tambah List</button> 
+        </div>
+        <ol>
+            <li v-for="(todo, index) in todos">
+                {{ todo }}
+                <button v-on:click="hapus(index)">Hapus</button>
+            </li>
+        </ol>
+    </div>
+
+   
+    <script>
+        new Vue({
+            el: '#app',
+            
+            data: {
+                todo: '',
+                todos: [],
+                selectedTodo: null
+            },
+            
+            methods: {
+                tambah: function(){
+                    this.todos.push(this.todo)
+                    this.todo = ''
+                },
+                hapus: function(index){
+                    this.todos.splice(index, 1)
+                },
+            }
+        })
+    </script>
+</body>
+</html>
